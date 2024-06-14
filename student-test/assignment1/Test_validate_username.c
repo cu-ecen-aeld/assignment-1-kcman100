@@ -14,9 +14,17 @@
 */
 void test_validate_my_username()
 {
-    /**
-     * TODO: Replace the line below with your code here as described above to verify your /conf/username.txt 
-     * config file and my_username() functions are setup properly
-     */
-    TEST_ASSERT_TRUE_MESSAGE(false,"AESD students, please fix me!");
+  /**
+   * TODO: Replace the line below with your code here as described above to verify your /conf/username.txt
+   * config file and my_username() functions are setup properly
+   */
+  //TEST_ASSERT_TRUE_MESSAGE(false,"AESD students, please fix me!");
+
+  // Ken's Code below
+  char *username_from_config_file = malloc_username_from_conf_file() ;
+  printf("username_from_config_file = %s\r\n",username_from_config_file) ;
+  printf("my_username() = %s\r\n",my_username()) ;
+  //my_username() ;
+  // TEST_ASSERT_EQUAL_STRING( expected , actual )
+  TEST_ASSERT_EQUAL_STRING( my_username() , username_from_config_file ) ;
 }

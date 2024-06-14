@@ -18,7 +18,7 @@ then
 		echo "Using default value ${NUMFILES} for number of files to write"
 	else
 		NUMFILES=$1
-	fi	
+	fi
 else
 	NUMFILES=$1
 	WRITESTR=$2
@@ -30,6 +30,8 @@ MATCHSTR="The number of files are ${NUMFILES} and the number of matching lines a
 echo "Writing ${NUMFILES} files containing string ${WRITESTR} to ${WRITEDIR}"
 
 rm -rf "${WRITEDIR}"
+
+mkdir /tmp/aeld-data
 
 # create $WRITEDIR if not assignment1
 assignment=`cat ../conf/assignment.txt`
@@ -45,6 +47,7 @@ then
 	then
 		echo "$WRITEDIR created"
 	else
+		echo "Error 27: "$WRITEDIR" does not exist"
 		exit 1
 	fi
 fi
@@ -52,12 +55,21 @@ fi
 #make clean
 #make
 
+#ls $WRITEDIR
+
+echo "Here 12"
+
 for i in $( seq 1 $NUMFILES)
 do
+	echo "Trying to execute command ./writer.sh "$WRITEDIR/${username}$i.txt" "$WRITESTR
 	./writer.sh "$WRITEDIR/${username}$i.txt" "$WRITESTR"
 done
 
+echo "Here 15"
+
 OUTPUTSTRING=$(./finder.sh "$WRITEDIR" "$WRITESTR")
+
+echo "Here 17"
 
 # remove temporary directories
 rm -rf /tmp/aeld-data
