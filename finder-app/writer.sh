@@ -13,7 +13,8 @@ then
   #else
   #  echo "Found file: "$full_path_to_file
   # How many directory paths
-  number_of_directories_in_path=$(echo $full_path_to_file | tr -cd 't' | wc -c)
+  number_of_directories_in_path=$(echo $full_path_to_file | tr -cd '/' | wc -c)
+  number_of_directories_in_path=$((number_of_directories_in_path+1))
   echo "number_of_directories_in_path: "$number_of_directories_in_path
   mkdir -p $(cut -d'/' --complement -f$number_of_directories_in_path <<< "$full_path_to_file")
     touch $full_path_to_file

@@ -1,5 +1,5 @@
 name: assignment-test
-on: 
+on:
     push:
         tags-ignore:
             - '*'
@@ -24,3 +24,4 @@ jobs:
             run : git submodule update --init --recursive
           - name: Run full test
             run: ./full-test.sh
+
